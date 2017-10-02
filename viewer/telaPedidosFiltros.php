@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
 <?php
 include_once '../Data.php';
 include_once '../controller/pedidoController.php';
@@ -13,39 +8,8 @@ $dataInicial = $_GET["datainicial"];
 $dataFinal = $_GET["datafinal"];
 $valorInicial = $_GET["precoinicial"];
 $valorFinal = $_GET["precofinal"];
-
+include '../cabecalho.php';
 ?>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Virtual</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-
-<body>
-    <div class="page-header">
-        <h1>Sistema de loja virtual<small> Versão 0.1</small></h1>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand navbar-link"> </a>
-                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                </div>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active" role="presentation"><a href="telaPedidos.php" id="btnPedidos">Pedidos </a></li>
-                        <li role="presentation"><a href="#">Produtos </a></li>
-                        <li role="presentation"><a href="#">Clientes </a></li>
-                        <li role="presentation"><a href="#">Vendedores </a></li>
-                        <li role="presentation"><a href="#">Filiais </a></li>
-                        <li role="presentation"><a href="#">Usuários </a></li>
-                    </ul>
-                    <button class="btn btn-default navbar-btn navbar-right" type="button">Sair </button>
-                </div>
-            </div>
-        </nav>
-    </div>
     <h2>Pedidos </h2>
     <div class="col-md-3">
         
@@ -73,6 +37,7 @@ $valorFinal = $_GET["precofinal"];
                         <th class="active">Número do pedido</th>
                         <th class="active">Valor </th>
                         <th class="active">Data </th>
+                        <th class="active" style="font-weight:bold;width:11.5em">Ações </th>
                     </tr>
                 </thead>
                 <tbody>

@@ -45,13 +45,10 @@ class pedidosDao {
             $querry = "select * from pedido where numero = " . $numeroPedido;
 
         } else {
-            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and dataPedido <= '" . $dataFinal . "' and valorTotal >= '" . $valorInicial . "' 
-                        and valorTotal <= '" . $valorFinal . "'";
-            /*if (!(is_null($dataInicial))) {
-                if (!(is_null($dataFinal))) {
-                    if (!(is_null($valorInicial))) {
-                        if (!(is_null($valorFinal))) {
+            if (!(empty($dataInicial))) {
+                if (!(empty($dataFinal))) {
+                    if (!(empty($valorInicial))) {
+                        if (!(empty($valorFinal))) {
                             $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
                         and dataPedido <= '" . $dataFinal . "' and valorTotal >= '" . $valorInicial . "' 
                         and valorTotal <= '" . $valorFinal . "'";
@@ -60,13 +57,71 @@ class pedidosDao {
                         and dataPedido <= '" . $dataFinal . "' and valorTotal >= '" . $valorInicial . "'";
                         }
                     } else {
-
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
+                        and dataPedido <= '" . $dataFinal . "' and valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
+                        and dataPedido <= '" . $dataFinal . "'";
+                        }
                     }
 
+                } else {
+                    if (!(empty($valorInicial))) {
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
+                        and valorTotal >= '" . $valorInicial . "' and valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
+                        and valorTotal >= '" . $valorInicial . "'";
+                        }
+                    } else {
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
+                        and valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "'";
+                        }
+                    }
                 }
 
+            }else {
+                if (!(empty($dataFinal))) {
+                    if (!(empty($valorInicial))) {
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "' 
+                            and valorTotal >= '" . $valorInicial . "' 
+                        and valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "' 
+                            and valorTotal >= '" . $valorInicial . "'";
+                        }
+                    } else {
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "' 
+                            and valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "'";
+                        }
+                    }
 
-            }*/
+                } else {
+                    if (!(empty($valorInicial))) {
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where valorTotal >= '" . $valorInicial . "' 
+                            and valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido where valorTotal >= '" . $valorInicial . "'";
+                        }
+                    } else {
+                        if (!(empty($valorFinal))) {
+                            $querry = "select * from pedido where valorTotal <= '" . $valorFinal . "'";
+                        } else {
+                            $querry = "select * from pedido";
+                        }
+                    }
+                }
+            }
         }
         $resultado = $this->banco->select($querry);
         return $resultado;
@@ -95,8 +150,3 @@ class pedidosDao {
 
 
 }
-
-
-
-
-?>
