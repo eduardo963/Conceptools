@@ -57,6 +57,7 @@ class repositorio{
 
         if ($conexao->connect_error) {
             echo "Erro na conexão: " . $conexao->connect_error;
+            $conexao->close();
             return false;
         }
 
@@ -68,15 +69,17 @@ class repositorio{
                     $linhas[] = $row;
 
                 }
+                $conexao->close();
                 return $linhas;
             } else {
-                echo "0 results";
+                echo "Nenhum resultado encontrado!";
+                $conexao->close();
                 return false;
             }
         } catch (Exception $exception){
 
         }
-        $conexao->close();
+
 
     }
 

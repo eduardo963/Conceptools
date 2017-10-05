@@ -12,8 +12,6 @@ class pedidosDao {
         $this->banco = new repositorio();
 
 	}
-
-
 	public function inserirPedido(pedido $pedido){
         $valorTotal = $pedido->getValorTotal();
         $dataPedido = $pedido->getDataPedido();
@@ -26,6 +24,10 @@ class pedidosDao {
 		
 	}
 
+	public function deletarPedido($numeroPedido){
+	    return $resultado = $this->banco->delete("DELETE FROM pedido WHERE numero = ".$numeroPedido);
+    }
+
 	public function listarTodosOsPedidos(){
         $resultado = $this->banco->select("SELECT * FROM pedido");
         return $resultado;
@@ -37,6 +39,7 @@ class pedidosDao {
         $resultado = $this->banco->select("select * from pedido where dataPedido = '".$hoje."'");
         return $resultado;
     }
+
     public function filtrarPedidos($numeroPedido, $dataInicial, $dataFinal, $valorInicial, $valorFinal){
         /*echo  "num ".$numeroPedido. " dt in ". $dataInicial. " dt fim ". $dataFinal. " pc in ". $valorInicial. " pc fim ". $valorFinal;
         var_dump($numeroPedido);*/
@@ -128,25 +131,9 @@ class pedidosDao {
     }
 
 	public function pegarPedido($id){
-        $db = new mysqli('localhost', 'root', '231511', 'testes');
-        if(mysqli_connect_errno()){
-            echo mysqli_connect_error();
-        }
-        $result = $db->query('SELECT * FROM `produtos`');
-        if($result){
-            while ($row = $result->fetch_assoc()){
-                echo '<br /><pre>';
-                print_r($row);
-                echo '</pre>';
-            }
-            $result->free();
-        }
-        $db->close();
-
-
-
+        $resultado = $this->banco->select("SELECT * FROM pedido WHERE numero = ".$id);
+        return $resultado;
     }
-
 
 
 }
