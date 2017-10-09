@@ -26,7 +26,7 @@
                     <li role="presentation"><a href="#" id="btnMenuClientes">Clientes </a></li>
                     <li role="presentation"><a href="#" id="btnMenuVendedores">Vendedores </a></li>
                     <li role="presentation"><a href="#" id="btnMenuFiliais">Filiais </a></li>
-                    <li role="presentation"><a href="#" id="btnMenuUsuarios">Usuários </a></li>
+                    <li role="presentation"><a href="../viewer/telaUsuarios.php" id="btnMenuUsuarios">Usuários </a></li>
                 </ul>
                 <button class="btn btn-default navbar-btn navbar-right" type="button">Sair </button>
             </div>
