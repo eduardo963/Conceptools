@@ -26,6 +26,7 @@ include_once '../cabecalho.php';
                         <th class="active">Nome do usuário</th>
                         <th class="active">Login </th>
                         <th class="active">E-mail </th>
+                        <th class="active">Barra de ações </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,60 +35,70 @@ include_once '../cabecalho.php';
                         <td>Alan da Silva</td>
                         <td>alan.silva </td>
                         <td>alan34@gmail.com </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td>2 </td>
                         <td>Ana maria</td>
                         <td>ana.maria </td>
                         <td>ana173@hotmail.com </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários)</td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                     <tr>
                         <td> </td>
                         <td>(Sem usuários) </td>
                         <td> </td>
                         <td> </td>
+                        <td>(Barra de ações)</td>
                     </tr>
                 </tbody>
             </table>

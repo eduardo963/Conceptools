@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li role="presentation"><a href="../viewer/telaPedidos.php" id="btnMenuPedidos">Pedidos </a></li>
-                    <li role="presentation"><a href="#" id="btnMenuProdutos">Produtos </a></li>
+                    <li role="presentation"><a href="../viewer/telaProdutos.php" id="btnMenuProdutos">Produtos </a></li>
                     <li role="presentation"><a href="#" id="btnMenuClientes">Clientes </a></li>
                     <li role="presentation"><a href="#" id="btnMenuVendedores">Vendedores </a></li>
                     <li role="presentation"><a href="#" id="btnMenuFiliais">Filiais </a></li>
