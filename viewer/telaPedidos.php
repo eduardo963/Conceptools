@@ -8,7 +8,7 @@ $mensagem = "";
 
 
 //Este if abaixo verifica se um pedido deverá ser deletado, verificando se existe o parâmetro "deletar" na url enviada
-//para o servidor pelo GET. (Caso o parâmetro exista o pedido deverá ser deletado.)
+//para o servidor pelo POST.
 
 if(array_key_exists("deletar", $_POST)){
     $numeroPedidoParaDeletar = $_POST["deletar"];
@@ -21,9 +21,17 @@ if(array_key_exists("deletar", $_POST)){
 
 
 }
+//Este if abaixo verifica se um pedido deverá ser visualizado, verificando se existe o parâmetro "visualizar" na url enviada
+//para o servidor pelo POST.
+if(array_key_exists("visualizar", $_POST)){
+    $numeroPedidoParaVisualizar = $_POST["visualizar"];
+    include "telaDetalhesPedido.php";
+    die;
+
+}
 
 //Este if abaixo verifica se os pedidos deverão ser filtrados, caso exista o parâmetro "numeropedido" na url enviada
-//para o servidor pelo GET.
+//para o servidor pelo POST.
 
 if(array_key_exists("numeropedido", $_POST)){
     $numeroPedido = $_POST["numeropedido"];

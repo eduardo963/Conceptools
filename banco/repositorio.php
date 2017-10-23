@@ -1,12 +1,14 @@
 <?php
-
+include "InterfaceRepositorio.php";
 /**
  * Created by PhpStorm.
  * User: Eduardo
  * Date: 19/09/2017
  * Time: 14:12
  */
-class repositorio implements InterfaceRepositorio {
+
+
+class repositorio implements InterfaceRepositorio{
 
     private $host;
     private $usuario;

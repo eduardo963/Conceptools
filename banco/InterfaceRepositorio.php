@@ -28,7 +28,7 @@ interface InterfaceRepositorio
 
     /**
      * @param $querry <- String
-     * @return boolean
+     * @return mixed
      */
     public function select($querry);
 }

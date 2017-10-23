@@ -23,9 +23,9 @@
                 <ul class="nav navbar-nav">
                     <li role="presentation"><a href="../viewer/telaPedidos.php" id="btnMenuPedidos">Pedidos </a></li>
                     <li role="presentation"><a href="../viewer/telaProdutos.php" id="btnMenuProdutos">Produtos </a></li>
-                    <li role="presentation"><a href="#" id="btnMenuClientes">Clientes </a></li>
-                    <li role="presentation"><a href="#" id="btnMenuVendedores">Vendedores </a></li>
-                    <li role="presentation"><a href="#" id="btnMenuFiliais">Filiais </a></li>
+                    <li role="presentation"><a href="../viewer/telaClientes.php" id="btnMenuClientes">Clientes </a></li>
+                    <li role="presentation"><a href="../viewer/telaVendedores.php" id="btnMenuVendedores">Vendedores </a></li>
+                    <li role="presentation"><a href="../viewer/telaFiliais.php" id="btnMenuFiliais">Filiais </a></li>
                     <li role="presentation"><a href="../viewer/telaUsuarios.php" id="btnMenuUsuarios">Usuários </a></li>
                 </ul>
                 <form action="../index.php">
