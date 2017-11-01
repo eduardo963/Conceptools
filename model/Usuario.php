@@ -13,6 +13,12 @@ class Usuario
     private $senha;     //String  - Senha do usuário
     private $nome;      //String  - Nome do usuário
     private $email;     //String  - E-mail do usuário
+    private $emailRecuperacao;
+    private $celular;
+    private $perguntaRecuperacao;
+    private $respostaRecuperacao;
+    private $ativo;
+    private $dataCriacao;
 
     /**
      * Usuario constructor.
@@ -111,9 +117,100 @@ class Usuario
         $this->email = $email;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmailRecuperacao()
+    {
+        return $this->emailRecuperacao;
+    }
 
+    /**
+     * @param mixed $emailRecuperacao
+     */
+    public function setEmailRecuperacao($emailRecuperacao)
+    {
+        $this->emailRecuperacao = $emailRecuperacao;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getCelular()
+    {
+        return $this->celular;
+    }
 
+    /**
+     * @param mixed $celular
+     */
+    public function setCelular($celular)
+    {
+        $this->celular = $celular;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getPerguntaRecuperacao()
+    {
+        return $this->perguntaRecuperacao;
+    }
+
+    /**
+     * @param mixed $perguntaRecuperacao
+     */
+    public function setPerguntaRecuperacao($perguntaRecuperacao)
+    {
+        $this->perguntaRecuperacao = $perguntaRecuperacao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRespostaRecuperacao()
+    {
+        return $this->respostaRecuperacao;
+    }
+
+    /**
+     * @param mixed $respostaRecuperacao
+     */
+    public function setRespostaRecuperacao($respostaRecuperacao)
+    {
+        $this->respostaRecuperacao = $respostaRecuperacao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAtivo()
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param mixed $ativo
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataCriacao()
+    {
+        return $this->dataCriacao;
+    }
+
+    /**
+     * @param mixed $dataCriacao
+     */
+    public function setDataCriacao($dataCriacao)
+    {
+        $this->dataCriacao = $dataCriacao;
+    }
 
 }

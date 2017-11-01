@@ -39,12 +39,13 @@ include_once '../cabecalho.php';
     <p> </p>
     <button class="btn btn-default btn-block" type="submit"><strong>Concluir Pedido</strong></button>
 </div>
-<div class="col-md-9">
+<div class="col-md-5">
     <div class="row">
         <div class="col-md-12">
             <div>
                 <h3>Filtro de produtos</h3>
-                <form><strong>Nome do produto: </strong>
+                <form action="telaPedidoCadastrado.php">
+                    <strong>Nome do produto: </strong>
                     <input class="form-control" type="text" placeholder="Nome do produto" autofocus="" autocomplete="on"><strong>Codigo do produto: </strong>
                     <input class="form-control" type="text" inputmode="numeric">
                     <button class="btn btn-default btn-block" type="submit">Buscar </button>
@@ -70,8 +71,8 @@ include_once '../cabecalho.php';
                         <td>Cell 3</td>
                     </tr>
                     <tr>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
+                        <td>Cell 1</td>
+                        <td>Cell 2</td>
                         <td>Cell 3</td>
                     </tr>
                     </tbody>
@@ -79,6 +80,26 @@ include_once '../cabecalho.php';
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-4">
+    <h3>Produtos adicionados</h3>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+        <tr class="active">
+            <th>Código: </th>
+            <th>Nome: </th>
+            <th>Quantidade: </th>
+            <th>Ação: </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Cell 1</td>
+            <td>Cell 2</td>
+            <td>Cell 3</td>
+            <td>Cell 4</td>
+        </tr>
+    </table>
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

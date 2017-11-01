@@ -12,7 +12,7 @@
 <body>
 
 <div class="page-header">
-    <h1>Sistema de loja virtual<small> Versão 0.1</small></h1>
+    <h1>Sistema de loja virtual<small> Versão 0.2</small></h1>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">

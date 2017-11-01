@@ -1,8 +1,11 @@
 <?php
 include_once '../cabecalho.php';
 ?>
-<h2>Vendedores <button class="btn btn-default" type="button"><strong>Novo vendedor</strong></button></h2>
+<h2>Vendedores</h2>
 <div class="col-md-3">
+    <form action="telaCadastroVendedor.php" method="post">
+        <button class="btn btn-default btn-block" type="submit" id="btnCadastrarPedido"><strong>Novo vendedor</strong></button>
+    </form>
     <h4 class="text-uppercase text-center">Filtros </h4>
     <form>
         <div class="form-group"><strong>ID: </strong>

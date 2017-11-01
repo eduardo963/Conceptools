@@ -1,8 +1,11 @@
 <?php
 include_once '../cabecalho.php';
 ?>
-<h2>Filiais <button class="btn btn-default" type="button"><strong>Nova filial</strong></button></h2>
+<h2>Filiais</h2>
 <div class="col-md-3">
+    <form action="telaCadastroFilial.php">
+        <button class="btn btn-default btn-block" type="submit" ><strong>Nova Filial</strong></button>
+    </form>
     <h4 class="text-uppercase text-center">Filtros </h4>
     <form>
         <div class="form-group"><strong>ID: </strong>

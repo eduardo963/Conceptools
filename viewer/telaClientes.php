@@ -1,8 +1,11 @@
 <?php
 include_once '../cabecalho.php';
 ?>
-<h2>Clientes <button class="btn btn-default" type="button"><strong>Novo cliente</strong></button></h2>
+<h2>Clientes</h2>
 <div class="col-md-3">
+    <form action="telaTipoCliente.php">
+        <button class="btn btn-default btn-block" type="submit"><strong>Novo cliente</strong></button>
+    </form>
     <h4 class="text-uppercase text-center">Filtros </h4>
     <form>
         <div class="form-group"><strong>ID: </strong>
