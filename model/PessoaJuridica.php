@@ -6,7 +6,7 @@
  * Date: 2017-10-22
  * Time: 10:31 PM
  */
-class PessoaJuridica extends Pessoa
+final class PessoaJuridica extends Pessoa
 {
     private $cnpj;
     private $inscricaoEstadual;

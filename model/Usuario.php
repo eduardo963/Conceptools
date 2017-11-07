@@ -18,7 +18,6 @@ class Usuario
     private $perguntaRecuperacao;
     private $respostaRecuperacao;
     private $ativo;
-    private $dataCriacao;
 
     /**
      * Usuario constructor.
@@ -195,22 +194,6 @@ class Usuario
     public function setAtivo($ativo)
     {
         $this->ativo = $ativo;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDataCriacao()
-    {
-        return $this->dataCriacao;
-    }
-
-    /**
-     * @param mixed $dataCriacao
-     */
-    public function setDataCriacao($dataCriacao)
-    {
-        $this->dataCriacao = $dataCriacao;
     }
 
 }

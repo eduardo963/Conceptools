@@ -6,7 +6,7 @@
  * Date: 2017-10-22
  * Time: 10:36 PM
  */
-class PessoaFisica extends Pessoa
+final class PessoaFisica extends Pessoa
 {
     private $cpf;
     private $rg;

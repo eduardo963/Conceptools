@@ -1,8 +1,37 @@
 <?php
 include_once '../cabecalho.php';
+include_once '../controller/ProdutoController.php';
+
 if(array_key_exists("from", $_POST)){
-    echo "<p class='alert-success'>Produto cadastrado com sucesso!</p>";
+    $from = $_POST["from"];
+
+    if($from == "cadastroProduto"){
+
+        $codigoProduto = $_POST["codigoproduto"];
+        $nomeProduto = $_POST["nomeproduto"];
+        $valorProduto = $_POST["valorproduto"];
+        $categoriaProduto = $_POST["categoriaproduto"];
+        $corProduto = $_POST["corproduto"];
+        $pesoProduto = $_POST["pesoproduto"];
+        $materialProduto = $_POST["materialproduto"];
+        $dimensoesProduto = $_POST["dimensoesproduto"];
+        $descricaoProduto = $_POST["descricaoproduto"];
+
+        $controller = new ProdutoController();
+        if($controller->criarNovoProduto(0, $codigoProduto, $valorProduto, $categoriaProduto, $nomeProduto,
+            $corProduto, $pesoProduto, $dimensoesProduto, $materialProduto, $descricaoProduto)){
+            echo "<p class='alert-success'>Produto cadastrado com sucesso!</p>";
+        } else{
+
+            echo "<p class='alert-warning'>Produto não cadastrado!</p>";
+        }
+
+    }
+    else{
+
+    }
 }
+
 ?>
 <h2>Detalhes do Produto </h2>
 <div class="col-md-3">

@@ -6,7 +6,7 @@
  * Date: 2017-10-24
  * Time: 10:39 PM
  */
-class Vendedor extends Pessoa
+final class Vendedor extends Pessoa
 {
     private $cpf;
     private $rg;

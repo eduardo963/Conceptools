@@ -1,7 +1,7 @@
 <?php
 include_once '../Data.php';
 include_once '../banco/repositorio.php';
-include_once '../model/pedido.php';
+include_once '../model/Pedido.php';
 
 class pedidosDao {
 

@@ -1,5 +1,8 @@
 <?php
 include_once '../cabecalho.php';
+if(array_key_exists("from", $_POST)){
+    echo "<p class='alert-success'>Pedido cadastrado com sucesso!</p>";
+}
 ?>
 <h2>Detalhes do Pedido </h2>
 <div class="col-md-3">

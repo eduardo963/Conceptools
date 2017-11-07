@@ -26,17 +26,15 @@ class Produto {
      * @param $valor
      * @param $aVenda
      * @param $idCategoriaProduto
-     * @param $idGrupoProduto
      * @param $nomeProduto
      */
-    public function __construct($idProduto, $codProduto, $valor, $aVenda, $idCategoriaProduto, $idGrupoProduto, $nomeProduto)
+    public function __construct($idProduto, $codProduto, $valor, $aVenda, $idCategoriaProduto, $nomeProduto)
     {
         $this->idProduto = $idProduto;
         $this->codProduto = $codProduto;
         $this->valor = $valor;
         $this->aVenda = $aVenda;
         $this->idCategoriaProduto = $idCategoriaProduto;
-        $this->idGrupoProduto = $idGrupoProduto;
         $this->nomeProduto = $nomeProduto;
     }
 

@@ -37,7 +37,10 @@ include_once '../cabecalho.php';
         </optgroup>
     </select>
     <p> </p>
-    <button class="btn btn-default btn-block" type="submit"><strong>Concluir Pedido</strong></button>
+    <form action="telaDetalhesPedido.php" method="post">
+        <input type="hidden" name="from" value="cadastropedido">
+        <button class="btn btn-default btn-block" type="submit"><strong>Concluir Pedido</strong></button>
+    </form>
 </div>
 <div class="col-md-5">
     <div class="row">
