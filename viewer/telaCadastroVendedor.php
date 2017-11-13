@@ -9,8 +9,8 @@ include_once '../cabecalho.php';
             <input class="form-control" type="text" name="cpf" required="" maxlength="30" minlength="1" autocomplete="off"><strong>RG: </strong>
             <input class="form-control" type="text" name="rg" maxlength="30" minlength="1" autocomplete="off"><strong>Gênero: </strong>
             <input class="form-control" type="text" name="genero" maxlength="30" minlength="1" autocomplete="off" inputmode="numeric"><strong>Data de nascimento: </strong>
-            <input class="form-control" type="date" name="datadenascimento" maxlength="30" autocomplete="off" ><strong>Data de admissão: </strong>
-            <input class="form-control" type="date" name="datadeadmissao" maxlength="30" required="" autocomplete="off" ><strong>Telefone: </strong>
+            <input class="form-control" type="date" name="dataDeNascimento" maxlength="30" autocomplete="off" ><strong>Data de admissão: </strong>
+            <input class="form-control" type="date" name="dataDeAdmissao" maxlength="30" required="" autocomplete="off" ><strong>Telefone: </strong>
             <input class="form-control" type="text" name="telefone" required="" maxlength="30" minlength="4" autofocus="" autocomplete="on" inputmode="numeric"><strong>Celular: </strong>
             <input class="form-control" type="text" name="celular" maxlength="30" autofocus="" autocomplete="off" inputmode="numeric"><strong>Email:</strong>
             <input class="form-control" type="text" name="email" required="" maxlength="30" minlength="5" autofocus="" autocomplete="off"><strong>Endereco: </strong>
@@ -19,6 +19,7 @@ include_once '../cabecalho.php';
             <input class="form-control" type="text" name="cidade" maxlength="30" autofocus="" autocomplete="on"><strong>Estado: </strong>
             <input class="form-control" type="text" name="estado" maxlength="30" autofocus="" autocomplete="on"><strong>País: </strong>
             <input class="form-control" type="text" name="pais" maxlength="30" autofocus="" autocomplete="on">
+            <input class="hidden" name="from" value="cadastroVendedor">
             <button class="btn btn-default btn-block" type="submit">Cadastrar Vendedor</button>
         </form>
     </div>

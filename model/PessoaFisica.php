@@ -1,5 +1,5 @@
 <?php
-
+include_once 'Pessoa.php';
 /**
  * Created by PhpStorm.
  * User: Eduardo

@@ -1,5 +1,44 @@
 <?php
 include_once '../cabecalho.php';
+include_once '../controller/ProdutoController.php';
+$controler = new ProdutoController();
+
+if(array_key_exists("from",$_POST )){
+
+    if(array_key_exists("aprovar", $_POST)){
+        $id = $_POST["aprovar"];
+        if($controler->isProdutoAtivo($id)){
+            if($controler->desativarProduto($id)) {
+                echo "<p class='alert-success'>Produto desativado com sucesso!</p>";
+            } else{
+                echo "<p class='alert-warning'>O produto não foi desativado com sucesso.</p>";
+            }
+        }else{
+            if($controler->ativarProduto($id)) {
+                echo "<p class='alert-success'>Produto ativado com sucesso!</p>";
+            } else{
+                echo "<p class='alert-warning'>O produto não foi ativado com sucesso.</p>";
+            }
+        }
+    }
+
+    else if(array_key_exists("deletar",$_POST )){
+        $id = $_POST["deletar"];
+        if($controler->deletarProduto($id)) {
+            echo "<p class='alert-success'>Produto excluido com sucesso!</p>";
+        } else{
+            echo "<p class='alert-warning'>O produto não foi excluido com sucesso.</p>";
+        }
+
+
+    }
+
+    else if(array_key_exists("visualizar", $_POST)){
+        $id = $_POST["visualizar"];
+        header("Location: ../viewer/telaDetalhesProduto.php?id=".$id."");
+        exit();
+    }
+}
 ?>
     <h2>Produtos</h2>
     <div class="col-md-3">
@@ -35,7 +74,8 @@ include_once '../cabecalho.php';
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th class="active">Numero </th>
+                        <th class="active">ID </th>
+                        <th class="active">Código </th>
                         <th class="active">Nome do produto</th>
                         <th class="active">Categoria </th>
                         <th class="active">Valor </th>
@@ -43,76 +83,7 @@ include_once '../cabecalho.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1 </td>
-                        <td>Regata No Pain no Gain</td>
-                        <td>Regatas </td>
-                        <td>R$ 69,90 </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td>2 </td>
-                        <td>Bolsa Louis Vuitton </td>
-                        <td>Artigos de luxo </td>
-                        <td>R$ 5499,90 </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos)</td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td>(Sem produtos) </td>
-                        <td> </td>
-                        <td> </td>
-                        <td>(Barra de ações)</td>
-                    </tr>
+                <?php $controler->exibirProdutosCadastrados();?>
                 </tbody>
             </table>
         </div>

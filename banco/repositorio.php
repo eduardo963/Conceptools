@@ -44,8 +44,27 @@ class repositorio implements InterfaceRepositorio{
         return $this->executarSql($querry);
     }
 
-    public function insert($querry){
+    public function update($querry){
         return $this->executarSql($querry);
+    }
+
+    public function insert($querry){
+        $this->conexao = new mysqli;
+        $this->conexao->connect($this->host, $this->usuario, $this->senha, $this->banco);
+
+        if ($this->conexao->query($querry)) {
+
+            $id = $this->conexao->insert_id;
+
+
+            $this->conexao->close();
+
+            return $id;
+        } else {
+            $this->conexao->close();
+
+            return false;
+        }
     }
 
     public function delete($querry){

@@ -18,6 +18,7 @@ include_once '../cabecalho.php';
             <input class="form-control" type="text" name="estado" maxlength="30" autofocus="" autocomplete="on"><strong>País: </strong>
             <input class="form-control" type="text" name="pais" maxlength="30" autofocus="" autocomplete="on">
             <input class="hidden" name="tipo" value="Pessoa Física">
+            <input class="hidden" name="from" value="cadastroCliente">
             <button class="btn btn-default btn-block" type="submit">Cadastrar pessoa física</button>
         </form>
     </div>

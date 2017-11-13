@@ -44,15 +44,13 @@ values ('".$codigoProduto."', '".$valorProduto."', '".$aVenda."', '".$categoriaP
         return $resultado;
     }
 
-    public function listarProdutosDoDiaAtual(){
-        date_default_timezone_set("America/Sao_Paulo");
-        $hoje = date('Y-m-d');
-        $resultado = $this->banco->select("select * from produtos where dataProduto = '".$hoje."'");
+    public function alterarProduto($id, $valor){
+        $resultado = $this->banco->update("UPDATE `produtos` SET `aVenda` = '".$valor."' WHERE `idProduto` = '".$id."'");
         return $resultado;
     }
 
 	public function pegarProduto($id){
-        $resultado = $this->banco->select("SELECT * FROM Produto WHERE numero = ".$id);
+        $resultado = $this->banco->select("SELECT * FROM produtos WHERE idProduto = ".$id);
         return $resultado;
     }
 

@@ -13,12 +13,13 @@ abstract class Pessoa
     protected $telefone;
     private $celular;
     protected $email;
-    private $endereço;
+    private $endereco;
     private $cep;
     private $cidade;
     private $estado;
     private $pais;
     private $ativo;
+    private $tipo;
 
     /**
      * Pessoa constructor.
@@ -101,17 +102,17 @@ abstract class Pessoa
     /**
      * @return mixed
      */
-    public function getEndereço()
+    public function getEndereco()
     {
         return $this->endereço;
     }
 
     /**
-     * @param mixed $endereço
+     * @param mixed $endereco
      */
-    public function setEndereço($endereço)
+    public function setEndereco($endereco)
     {
-        $this->endereço = $endereço;
+        $this->endereço = $endereco;
     }
 
     /**
@@ -209,6 +210,23 @@ abstract class Pessoa
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param mixed $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
 
 
 
