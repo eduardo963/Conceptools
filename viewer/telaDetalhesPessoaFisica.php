@@ -60,7 +60,43 @@ if(array_key_exists("from", $_POST)){
             echo "<p class='alert-warning'>Cliente não cadastrado!</p>";
         }
 
+    } else if($from == "updateCliente"){
+
+        $id = $_POST["id"];
+        $nome = $_POST["nome"];
+        $telefone = $_POST["telefone"];
+        $celular = $_POST["celular"];
+        $email = $_POST["email"];
+        $endereco = $_POST["endereco"];
+        $cep = $_POST["cep"];
+        $cidade = $_POST["cidade"];
+        $estado = $_POST["estado"];
+        $pais = $_POST["pais"];
+
+        $cpf = $_POST["cpf"];
+        $rg = $_POST["rg"];
+        $genero = $_POST["genero"];
+
+        $arrayDaCliente = $controller->getCliente($id);
+        $ativo = $arrayDaCliente["ativo"];
+        
+
+        $sucesso = $controller->updateNovaPessoaFisica($id, $nome, $telefone, $celular, $email, $endereco, $cep, $cidade, $estado, $pais,
+            $cpf, $rg, $genero);
+
+
+
+        if($sucesso){
+            echo "<p class='alert-success'>Cliente atualizado com sucesso!</p>";
+        } else{
+
+            echo "<p class='alert-warning'>Cliente não atualizado!</p>";
+        }
+
     }
+    
+    
+    
 
     else if ($from == "detalhesCliente"){
         $id = $_POST["id"];

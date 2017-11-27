@@ -57,7 +57,7 @@ class ClienteController
         $cliente->setRg($rg);
         $cliente->setGenero($genero);
 
-        $id = $this->clienteDao->updateCliente($id, $cliente);
+        $id = $this->clienteDao->updateCliente($cliente, $id);
 
         return $id;
 
@@ -180,6 +180,9 @@ class ClienteController
                             <img src='../assets/img/imgAprovar.png' alt='Aprovar' style='width:1.2em; height:1.2em'>
                         </button> <button type='submit' name='deletar' value='{$id}'> 
                             <img src='../assets/img/imgDeletar.png' alt='Deletar' style='width:1.2em; height:1.2em'>
+                        </button>
+                        <button type='submit' name='editar' value='{$id}'> 
+                            <img src='../assets/img/imgEditar.png' alt='Editar' style='width:1.2em; height:1.2em'>
                         </button>
                     </form> 
                     </td>

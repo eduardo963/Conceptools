@@ -45,7 +45,6 @@ class FilialController
         $filial->setUf($uf);
         $filial->setPais($pais);
         $filial->setDataDeInauguracao($dataDeInauguracao);
-        $filial->setAtivo("s");
 
         $resultado = $this->filialDao->updateFilial($filial, $id);
 
@@ -112,6 +111,9 @@ class FilialController
                             <img src='../assets/img/imgAprovar.png' alt='Aprovar' style='width:1.2em; height:1.2em'>
                         </button> <button type='submit' name='deletar' value='{$id}'> 
                             <img src='../assets/img/imgDeletar.png' alt='Deletar' style='width:1.2em; height:1.2em'>
+                        </button>
+                        <button type='submit' name='editar' value='{$id}'> 
+                            <img src='../assets/img/imgEditar.png' alt='Editar' style='width:1.2em; height:1.2em'>
                         </button>
                     </form> 
                     </td>

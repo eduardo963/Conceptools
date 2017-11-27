@@ -41,7 +41,6 @@ class UsuarioController
                                      $respostaRecuperacao){
 
         //A senha do usuário não é salva, o que fica salvo é o hash!
-
         $hash = $this->encriptarSenha($senha);
 
         $usuario = new Usuario(0, $login, $hash, $nome, $email);

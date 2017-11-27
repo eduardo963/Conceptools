@@ -39,31 +39,25 @@ if(array_key_exists("from",$_POST )){
         header("Location: ../viewer/telaDetalhesUsuario.php?id=".$id);
         exit();
     }
+
+    else if(array_key_exists("editar", $_POST)){
+        $id = $_POST["editar"];
+        var_dump($id);
+        header("Location: ../viewer/telaCadastroUsuario.php?id=".$id);
+        exit();
+    }
 }
 
 
 
 ?>
-    <h2>Usuários </h2>
-    <div class="col-md-3">
+    <div class="col-md-4">
+        <h2>Usuários </h2>
         <form action="telaCadastroUsuario.php">
             <button class="btn btn-default btn-block" type="submit" ><strong>Novo Usuário</strong></button>
         </form>
-        <h4 class="text-uppercase text-center">Filtros </h4><strong>Id do usuário:</strong>
-        <form>
-            <div class="form-group">
-                <input class="form-control" type="text"><strong>Nome: </strong>
-                <input class="form-control" type="text"><strong>Login:</strong>
-                <input class="form-control" type="text">
-                <div class="checkbox">
-                    <label class="control-label">
-                        <input type="checkbox"><strong>Somente usuários ativos</strong></label>
-                </div>
-                <button class="btn btn-default btn-block" type="submit">Filtrar </button>
-            </div>
-        </form>
     </div>
-    <div class="col-md-8 col-md-offset-0">
+    <div class="col-md-12 col-md-offset-0">
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -96,12 +90,14 @@ if(array_key_exists("from",$_POST )){
                         </button> <button type='submit' name='deletar' value='{$id}'> 
                             <img src='../assets/img/imgDeletar.png' alt='Deletar' style='width:1.2em; height:1.2em'>
                         </button>
+                        <button type='submit' name='editar' value='{$id}'> 
+                            <img src='../assets/img/imgEditar.png' alt='Editar' style='width:1.2em; height:1.2em'>
+                        </button>
                     </form> 
                     </td>
                     </tr>";
                     }
                 }
-
 
                 ?>
                 </tbody>

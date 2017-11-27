@@ -49,7 +49,7 @@ class UsuariosDao {
 
         $querry = "UPDATE `usuarios` SET `login`='".$login."',`senha`='".$senha."',`nome`='".$nome."',
 `email`='".$email."',`emailRecuperacao`='".$emailRecuperacao."',`celular`='".$celular."',`perguntaRecuperacao`='".$perguntaRecuperacao."',
-`respostaRecuperacao`='".$respostaRecuperacao."' WHERE id = '".$id."';)";
+`respostaRecuperacao`='".$respostaRecuperacao."' WHERE id = '".$id."';";
 
         $resultado = $this->banco->update($querry);
         return $resultado;

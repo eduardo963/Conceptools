@@ -53,6 +53,33 @@ if(array_key_exists("from", $_POST)){
             echo "<p class='alert-warning'>Produto não cadastrado!</p>";
         }
 
+    } else if($from == "updateProduto"){
+
+
+        $id = $_POST["id"];
+        $codigoProduto = $_POST["codigoproduto"];
+        $nomeProduto = $_POST["nomeproduto"];
+        $valorProduto = $_POST["valorproduto"];
+        $categoriaProduto = $_POST["categoriaproduto"];
+        $corProduto = $_POST["corproduto"];
+        $pesoProduto = $_POST["pesoproduto"];
+        $materialProduto = $_POST["materialproduto"];
+        $dimensoesProduto = $_POST["dimensoesproduto"];
+        $descricaoProduto = $_POST["descricaoproduto"];
+
+        $sucesso = $controller->updateNovoProduto($id, $codigoProduto, $valorProduto, $categoriaProduto, $nomeProduto,
+            $corProduto, $pesoProduto, $dimensoesProduto, $materialProduto, $descricaoProduto);
+
+        $arrayDoProduto = $controller->pegarProduto($id);
+        $aVenda = $arrayDoProduto["aVenda"];
+
+        if($sucesso){
+            echo "<p class='alert-success'>Produto atualizado com sucesso!</p>";
+        } else{
+
+            echo "<p class='alert-warning'>Produto não atualizado!</p>";
+        }
+
     }
 
     else if ($from == "detalhesProduto" or $from == "telaProdutos"){

@@ -65,7 +65,45 @@ if(array_key_exists("from", $_POST)){
             echo "<p class='alert-warning'>Vendedor não cadastrado!</p>";
         }
 
+    } else if($from == "updateVendedor"){
+
+        $id = $_POST["id"];
+        $nome = $_POST["nome"];
+        $telefone = $_POST["telefone"];
+        $celular = $_POST["celular"];
+        $email = $_POST["email"];
+        $endereco = $_POST["endereco"];
+        $cep = $_POST["cep"];
+        $cidade = $_POST["cidade"];
+        $estado = $_POST["estado"];
+        $pais = $_POST["pais"];
+
+        $cpf = $_POST["cpf"];
+        $rg = $_POST["rg"];
+        $genero = $_POST["genero"];
+
+        $dataDeAdmissao = $_POST["dataDeAdmissao"];
+        $dataDeNascimento = $_POST["dataDeNascimento"];
+
+        $arrayDaVendedor = $controller->getVendedor($id);
+        $ativo = $arrayDaVendedor["ativo"];
+
+
+        $sucesso = $controller->updateNovoVendedor($id, $nome, $telefone, $celular, $email, $endereco, $cep, $cidade, $estado, $pais,
+            $cpf, $rg, $genero, $dataDeAdmissao, $dataDeNascimento);
+
+
+
+        if($sucesso){
+            echo "<p class='alert-success'>Vendedor atualizado com sucesso!</p>";
+        } else{
+
+            echo "<p class='alert-warning'>Vendedor não atualizado!</p>";
+        }
+
     }
+
+
 
     else if ($from == "detalhesVendedor"){
         $id = $_POST["id"];

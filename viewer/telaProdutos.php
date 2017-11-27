@@ -38,38 +38,22 @@ if(array_key_exists("from",$_POST )){
         header("Location: ../viewer/telaDetalhesProduto.php?id=".$id."");
         exit();
     }
+
+    else if(array_key_exists("editar", $_POST)){
+        $id = $_POST["editar"];
+        var_dump($id);
+        header("Location: ../viewer/telaCadastroProduto.php?id=".$id);
+        exit();
+    }
 }
 ?>
-    <h2>Produtos</h2>
-    <div class="col-md-3">
+    <div class="col-md-4">
+        <h2>Produtos</h2>
         <form action="telaCadastroProduto.php">
             <button class="btn btn-default btn-block" type="submit" ><strong>Novo Produto</strong></button>
         </form>
-        <h4 class="text-uppercase text-center">Filtros </h4><strong>Numero do produto: </strong>
-        <form>
-            <div class="form-group">
-                <input class="form-control" type="text"><strong>Categoria: </strong>
-                <select class="form-control">
-                    <optgroup label="Selecione uma categoria">
-                        <option value="12" selected="">Categoria 1</option>
-                        <option value="13">Categoria 2</option>
-                        <option value="14">Categoria 3</option>
-                    </optgroup>
-                </select><strong>Valor incial e final:</strong>
-                <div class="row">
-                    <div class="col-md-6">
-                        <input class="form-control" type="number">
-                    </div>
-                    <div class="col-md-6">
-                        <input class="form-control" type="number">
-                    </div>
-                </div>
-                <br>
-                <button class="btn btn-default btn-block" type="submit">Filtrar </button>
-            </div>
-        </form>
     </div>
-    <div class="col-md-8 col-md-offset-0">
+    <div class="col-md-12 col-md-offset-0">
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -83,7 +67,8 @@ if(array_key_exists("from",$_POST )){
                     </tr>
                 </thead>
                 <tbody>
-                <?php $controler->exibirProdutosCadastrados();?>
+                <?php $controler->exibirProdutosCadastrados();
+                ?>
                 </tbody>
             </table>
         </div>

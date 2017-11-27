@@ -48,7 +48,37 @@ if(array_key_exists("from", $_POST)){
             echo "<p class='alert-warning'>Usuario não cadastrado!</p>";
         }
 
+    } else if($from == "updateUsuario"){
+
+        $id = $_POST["id"];
+        $login = $_POST["login"];
+        $senha = $_POST["senha"];
+        $nome = $_POST["nome"];
+        $email = $_POST["email"];
+        $emailRecuperacao = $_POST["emailRecuperacao"];
+        $celular = $_POST["celular"];
+        $perguntaRecuperacao = $_POST["perguntaRecuperacao"];
+        $respostaRecuperacao = $_POST["respostaRecuperacao"];
+
+        $arrayDaUsuario = $controller->getUsuario($id);
+        $ativo = $arrayDaUsuario["ativo"];
+
+        $sucesso = $controller->updateNovoUsuario($id, $login, $senha, $nome, $email, $emailRecuperacao, $celular, $perguntaRecuperacao,
+            $respostaRecuperacao);
+
+
+
+        if($sucesso){
+            echo "<p class='alert-success'>Usuario atualizado com sucesso!</p>";
+        } else{
+
+            echo "<p class='alert-warning'>Usuario não atualizado!</p>";
+        }
+
     }
+    
+    
+    
 
     else if ($from == "detalhesUsuario" or $from == "telaUsuarios"){
         $id = $_POST["id"];

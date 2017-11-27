@@ -38,25 +38,23 @@ if(array_key_exists("from",$_POST )){
         header("Location: ../viewer/telaDetalhesVendedor.php?id=".$id."");
         exit();
     }
+
+    else if(array_key_exists("editar", $_POST)){
+        $id = $_POST["editar"];
+        var_dump($id);
+        header("Location: ../viewer/telaCadastroVendedor.php?id=".$id);
+        exit();
+    }
 }
 ?>
-<h2>Vendedores</h2>
-<div class="col-md-3">
+
+<div class="col-md-4">
+    <h2>Vendedores</h2>
     <form action="telaCadastroVendedor.php" method="post">
         <button class="btn btn-default btn-block" type="submit" id="btnCadastrarPedido"><strong>Novo vendedor</strong></button>
     </form>
-    <h4 class="text-uppercase text-center">Filtros </h4>
-    <form>
-        <div class="form-group"><strong>ID: </strong>
-            <input class="form-control" type="text" name="id"><strong>Nome: </strong>
-            <input class="form-control" type="text" name="nomerazao"><strong>CPF: </strong>
-            <input class="form-control" type="text" name="cpfcnpj"><strong>Telefone:</strong>
-            <input class="form-control" type="text" name="cpfcnpj">
-            <button class="btn btn-default btn-block" type="submit">Filtrar </button>
-        </div>
-    </form>
 </div>
-<div class="col-md-8 col-md-offset-0">
+<div class="col-md-12 col-md-offset-0">
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead>

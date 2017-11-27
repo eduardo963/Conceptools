@@ -51,21 +51,13 @@ if(array_key_exists("from",$_POST )){
 
 
 ?>
+<div class="col-md-4">
     <h2>Categorias </h2>
-    <div class="col-md-3">
-        <form action="telaCadastroCategoria.php">
-            <button class="btn btn-default btn-block" type="submit" ><strong>Nova Categoria</strong></button>
-        </form>
-        <h4 class="text-uppercase text-center">Filtros </h4><strong>Id da categoria:</strong>
-        <form>
-            <div class="form-group">
-                <input class="form-control" type="text"><strong>Nome: </strong>
-                <input class="form-control" type="text">
-                <button class="btn btn-default btn-block" type="submit">Filtrar </button>
-            </div>
-        </form>
+    <form action="telaCadastroCategoria.php">
+        <button class="btn btn-default btn-block" type="submit" ><strong>Nova Categoria</strong></button>
+    </form>
     </div>
-    <div class="col-md-8 col-md-offset-0">
+    <div class="col-md-12 col-md-offset-0">
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead>

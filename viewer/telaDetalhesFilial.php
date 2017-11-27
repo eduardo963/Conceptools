@@ -50,6 +50,33 @@ if(array_key_exists("from", $_POST)){
             echo "<p class='alert-warning'>Filial não cadastrada!</p>";
         }
 
+    } else if($from == "updateFilial"){
+        $id = $_POST["id"];
+
+        $cep = $_POST["cep"];
+        $logradouro = $_POST["logradouro"];
+        $bairro = $_POST["bairro"];
+        $numero = $_POST["numero"];
+        $cidade = $_POST["cidade"];
+        $uf = $_POST["uf"];
+        $pais = $_POST["pais"];
+        $dataDeInauguracao = $_POST["dataDeInauguracao"];
+
+        $arrayDaFilial = $controller->getFilial($id);
+        $ativo = $arrayDaFilial["ativo"];
+
+        $sucesso = $controller->updateNovaFilial($id, $cep, $logradouro, $bairro, $numero,
+            $cidade, $uf, $pais, $dataDeInauguracao);
+
+
+
+        if($sucesso){
+            echo "<p class='alert-success'>Filial atualizada com sucesso!</p>";
+        } else{
+
+            echo "<p class='alert-warning'>Filial não atualizada!</p>";
+        }
+
     }
 
     else if ($from == "detalhesFilial" or $from == "telaFilials"){

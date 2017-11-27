@@ -129,6 +129,9 @@ class VendedorController
                         </button> <button type='submit' name='deletar' value='{$id}'> 
                             <img src='../assets/img/imgDeletar.png' alt='Deletar' style='width:1.2em; height:1.2em'>
                         </button>
+                        <button type='submit' name='editar' value='{$id}'> 
+                            <img src='../assets/img/imgEditar.png' alt='Editar' style='width:1.2em; height:1.2em'>
+                        </button>
                     </form> 
                     </td>
                     </tr>";

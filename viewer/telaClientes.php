@@ -39,31 +39,23 @@ if(array_key_exists("from",$_POST )){
         header("Location: ../viewer/telaDetalhes".$tipo.".php?id=".$id."");
         exit();
     }
+
+    else if(array_key_exists("editar", $_POST)){
+        $id = $_POST["editar"];
+        $tipo = $_POST["tipo"];
+        header("Location: ../viewer/telaCadastro".$tipo.".php?id=".$id);
+        exit();
+    }
 }
 ?>
-<h2>Clientes</h2>
-<div class="col-md-3">
+
+<div class="col-md-4">
+    <h2>Clientes</h2>
     <form action="telaTipoCliente.php">
         <button class="btn btn-default btn-block" type="submit"><strong>Novo cliente</strong></button>
     </form>
-    <h4 class="text-uppercase text-center">Filtros </h4>
-    <form>
-        <div class="form-group"><strong>ID: </strong>
-            <input class="form-control" type="text" name="id"><strong>Nome / Razão social: </strong>
-            <input class="form-control" type="text" name="nomerazao"><strong>CPF / CNPJ: </strong>
-            <input class="form-control" type="text" name="cpfcnpj"><strong>Tipo de cliente:</strong>
-            <select class="form-control" name="tipo">
-                <optgroup label="Selecione um tipo">
-                    <option value="ambos" selected="">Ambos</option>
-                    <option value="pessoafisica">Pessoa Física</option>
-                    <option value="pessoajuridica">Pessoa Jurídica</option>
-                </optgroup>
-            </select>
-            <button class="btn btn-default btn-block" type="submit">Filtrar </button>
-        </div>
-    </form>
 </div>
-<div class="col-md-8 col-md-offset-0">
+<div class="col-md-12 col-md-offset-0">
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead>

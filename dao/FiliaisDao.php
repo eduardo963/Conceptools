@@ -43,9 +43,8 @@ class FiliaisDao {
         $uf = $filial->getUf();
         $pais = $filial->getPais();
         $dataDeInauguracao = $filial->getDataDeInauguracao();
-
         $querry = "UPDATE `filiais` SET `cep`='".$cep."',`logradouro`='".$logradouro."',`bairro`='".$bairro."',
-`numero`='".$numero."',`cidade`='".$cidade."',`uf`='".$uf."',`pais`='".$pais."',`dataDeInauguracao`='".$dataDeInauguracao."' WHERE id = '".$id."';)";
+`numero`='".$numero."',`cidade`='".$cidade."',`uf`='".$uf."',`pais`='".$pais."',`dataDeInauguracao`='".$dataDeInauguracao."' WHERE id = '".$id."';";
 
         $resultado = $this->banco->update($querry);
 
