@@ -12,11 +12,12 @@ include_once '../cabecalho.php';
             <input class="form-control" type="text" name="cidade" maxlength="30" minlength="1" autocomplete="on"><strong>UF:</strong>
             <input class="form-control" type="text" name="uf" maxlength="2" minlength="1" autocomplete="on"><strong>País: </strong>
             <input class="form-control" type="text" name="pais" maxlength="30" minlength="4" autocomplete="on"><strong>Data de inauguração: </strong>
-            <input class="form-control" type="date" name="datainauguracao" required="" autocomplete="off">
+            <input class="form-control" type="date" name="dataDeInauguracao" required="" autocomplete="off">
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="filialativa" checked="" value="s"><strong>Filial ativa?</strong></label>
             </div>
+            <input class="hidden" name="from" value="cadastroFilial">
             <button class="btn btn-default btn-block" type="submit">Cadastrar Filial</button>
         </form>
     </div>

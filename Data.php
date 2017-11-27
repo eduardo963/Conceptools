@@ -9,4 +9,5 @@
 class Data
 {
     public static $enderecoLocal = "D:\\xampp\\htdocs\\Conceptools";
+
 }

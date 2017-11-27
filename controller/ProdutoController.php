@@ -2,6 +2,7 @@
 include_once '../Data.php';
 include_once '../model/Produto.php';
 include_once '../dao/ProdutosDao.php';
+include_once '../controller/CategoriaController.php';
 /**
  * Created by PhpStorm.
  * User: Eduardo
@@ -32,13 +33,37 @@ class ProdutoController
 
     }
 
+    public function updateNovoProduto($idProduto, $codProduto, $valor, $idCategoriaProduto, $nomeProduto, $cor, $pesoBruto, $dimensoes,
+                                     $material, $descricao){
+        $produto = new Produto($idProduto, $codProduto, $valor, "s", $idCategoriaProduto, $nomeProduto);
+        $produto->setCor($cor);
+        $produto->setPesoBruto($pesoBruto);
+        $produto->setDimensoes($dimensoes);
+        $produto->setMaterial($material);
+        $produto->setDescricao($descricao);
+
+        $resultado = $this->produtoDao->updateProduto($produto, $idProduto);
+
+        return $resultado;
+
+    }
+
     public function deletarProduto($id){
         return $this->produtoDao->deletarProduto($id);
     }
 
+    public function pegarProduto($id){
+        $resultado = $this->produtoDao->pegarProduto($id);
+
+        return $resultado;
+    }
+
     public function getProduto($id){
         $resultado = $this->produtoDao->pegarProduto($id);
+        var_dump($resultado);
+
         foreach ($resultado as $linha){
+            var_dump($linha);
             return $linha;
         }
     }
@@ -56,8 +81,7 @@ class ProdutoController
     public function isProdutoAtivo($id)
     {
         $arrayDeLinhas = $this->produtoDao->pegarProduto($id);
-        foreach ($arrayDeLinhas as $linha) {
-            $aVenda = $linha["aVenda"];
+            $aVenda = $arrayDeLinhas["aVenda"];
             if ($aVenda == "s") {
                 return true;
             }
@@ -66,9 +90,6 @@ class ProdutoController
             } else {
                 echo "Erro ao consultar o produto";
             }
-
-
-        }
     }
 
     public function exibirProdutosCadastrados(){
@@ -102,6 +123,12 @@ class ProdutoController
 
     }
 
+    public function exibirCategorias(){
+        $categoriaController = new CategoriaController();
+        $arrayDeCategorias = $categoriaController->exibirNomeCategorias();
+        return $arrayDeCategorias;
+    }
+
     public function listarProdutos($numeroProduto, $dataInicial, $dataFinal, $valorInicial, $valorFinal){
 
         $arrayDeLinhas = $this->produtoDao->filtrarProdutos($numeroProduto, $dataInicial,$dataFinal,$valorInicial, $valorFinal);
@@ -116,4 +143,6 @@ class ProdutoController
                     </tr>";
         }
     }
+
+
 }

@@ -6,7 +6,9 @@ $controller = new ProdutoController();
 if(array_key_exists("id", $_GET)){
     $id = $_GET["id"];
 
-    $arrayDoProduto = $controller->getProduto($id);
+    $arrayDoProduto = $controller->pegarProduto($id);
+
+
     $codigoProduto = $arrayDoProduto["codProduto"];
     $nomeProduto = $arrayDoProduto["nomeProduto"];
     $valorProduto = $arrayDoProduto["valor"];
@@ -62,7 +64,7 @@ if(array_key_exists("from", $_POST)){
             $action = "0";
         }
 
-        $arrayDoProduto = $controller->getProduto($id);
+        $arrayDoProduto = $controller->pegarProduto($id);
         $codigoProduto = $arrayDoProduto["codProduto"];
         $nomeProduto = $arrayDoProduto["nomeProduto"];
         $valorProduto = $arrayDoProduto["valor"];

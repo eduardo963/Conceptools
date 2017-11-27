@@ -41,6 +41,28 @@ class ClienteController
 
     }
 
+    public function updateNovaPessoaFisica($id, $nome, $telefone, $celular, $email, $endereco, $cep, $cidade, $estado, $pais,
+                                           $cpf, $rg, $genero){
+
+        $cliente = new PessoaFisica(0, $nome, $telefone, $email, $cpf);
+        $cliente->setCelular($celular);
+        $cliente->setEndereco($endereco);
+        $cliente->setCep($cep);
+        $cliente->setCidade($cidade);
+        $cliente->setEstado($estado);
+        $cliente->setPais($pais);
+        $cliente->setTipo("pessoaFisica");
+
+        $cliente->setCpf($cpf);
+        $cliente->setRg($rg);
+        $cliente->setGenero($genero);
+
+        $id = $this->clienteDao->updateCliente($id, $cliente);
+
+        return $id;
+
+    }
+
     public function criarNovaPessoaJuridica( $nome, $telefone, $celular, $email, $endereco, $cep, $cidade, $estado, $pais,
                                            $cnpj, $inscricaoEstadual, $nomeFantasia){
 
@@ -59,6 +81,29 @@ class ClienteController
         $cliente->setNomeFantasia($nomeFantasia);
 
         $id = $this->clienteDao->inserirCliente($cliente);
+
+        return $id;
+
+    }
+
+    public function updateNovaPessoaJuridica($id, $nome, $telefone, $celular, $email, $endereco, $cep, $cidade, $estado, $pais,
+                                             $cnpj, $inscricaoEstadual, $nomeFantasia){
+
+        $cliente = new PessoaJuridica(0, $nome, $telefone, $email, $cnpj);
+        $cliente->setCelular($celular);
+        $cliente->setEndereco($endereco);
+        $cliente->setCep($cep);
+        $cliente->setCidade($cidade);
+        $cliente->setEstado($estado);
+        $cliente->setPais($pais);
+        $cliente->setAtivo("s");
+        $cliente->setTipo("pessoaJuridica");
+
+        $cliente->setCnpj($cnpj);
+        $cliente->setInscricaoEstadual($inscricaoEstadual);
+        $cliente->setNomeFantasia($nomeFantasia);
+
+        $id = $this->clienteDao->updateCliente($cliente, $id);
 
         return $id;
 

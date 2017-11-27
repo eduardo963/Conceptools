@@ -13,7 +13,6 @@ class FiliaisDao {
 	}
 
 	public function inserirFilial(Filial $filial){
-        $id = $filial->getId();
         $cep = $filial->getCep();
         $logradouro = $filial->getLogradouro();
         $bairro = $filial->getBairro();
@@ -32,11 +31,30 @@ class FiliaisDao {
         $resultado = $this->banco->insert($querry);
 
         return $resultado;
-		
+
 	}
 
+    public function updateFilial(Filial $filial, $id){
+        $cep = $filial->getCep();
+        $logradouro = $filial->getLogradouro();
+        $bairro = $filial->getBairro();
+        $numero = $filial->getNumero();
+        $cidade = $filial->getCidade();
+        $uf = $filial->getUf();
+        $pais = $filial->getPais();
+        $dataDeInauguracao = $filial->getDataDeInauguracao();
+
+        $querry = "UPDATE `filiais` SET `cep`='".$cep."',`logradouro`='".$logradouro."',`bairro`='".$bairro."',
+`numero`='".$numero."',`cidade`='".$cidade."',`uf`='".$uf."',`pais`='".$pais."',`dataDeInauguracao`='".$dataDeInauguracao."' WHERE id = '".$id."';)";
+
+        $resultado = $this->banco->update($querry);
+
+        return $resultado;
+
+    }
+
 	public function deletarFilial($idFilial){
-	    return $resultado = $this->banco->delete("DELETE FROM filiais WHERE idFilial = ".$idFilial);
+	    return $resultado = $this->banco->delete("DELETE FROM filiais WHERE id = ".$idFilial);
     }
 
 	public function listarTodasAsFiliais(){

@@ -12,128 +12,72 @@ class pedidosDao {
         $this->banco = new repositorio();
 
 	}
-	public function inserirPedido(pedido $pedido){
+	public function inserirPedido(pedido $pedido, $produtos){
+
+
+
         $valorTotal = $pedido->getValorTotal();
+        $cliente = $pedido->getCliente();
+        $vendedor = $pedido->getVendedor();
+        $filial = $pedido->getFilial();
+        $numeroDeItens = $pedido->getNumeroDeItens();
         $dataPedido = $pedido->getDataPedido();
+        $aprovado = "n";
 
-        $querry = "insert into pedido (valorTotal, dataPedido, ativo) values ('".$valorTotal."', '".$dataPedido."', 's')";
 
-        $resultado = $this->banco->insert($querry);
 
-        return $resultado;
+        $querry = "INSERT INTO `pedidos`(`valorTotal`, `dataPedido`, `cliente`, `vendedor`, `filial`, 
+`numeroDeItens`, `aprovado`) VALUES ('".$valorTotal."', '".$dataPedido."','".$cliente."', '".$vendedor."', 
+'".$filial."', '".$numeroDeItens."', '".$aprovado."')";
+
+        $idPedido = $this->banco->insert($querry);
+
+//Parte de produtos:
+        $ids = array_keys($produtos);
+
+        foreach ($ids as $idProduto){
+
+            $quantidade = $produtos[$idProduto];
+
+            $querry = "INSERT INTO `pedidos_produtos` (`idPedido`, `idProduto`, `Quantidade`) 
+VALUES ('".$idPedido."', '".$idProduto."', '".$quantidade."')";
+
+
+            $this->banco->insert($querry);
+        }
+
+        return $idPedido;
 		
 	}
 
 	public function deletarPedido($numeroPedido){
-	    return $resultado = $this->banco->delete("DELETE FROM pedido WHERE numero = ".$numeroPedido);
+	    return $resultado = $this->banco->delete("DELETE FROM pedidos WHERE id = ".$numeroPedido);
     }
 
 	public function listarTodosOsPedidos(){
-        $resultado = $this->banco->select("SELECT * FROM pedido");
+        $resultado = $this->banco->select("SELECT * FROM pedidos");
         return $resultado;
     }
 
     public function listarPedidosDoDiaAtual(){
         date_default_timezone_set("America/Sao_Paulo");
         $hoje = date('Y-m-d');
-        $resultado = $this->banco->select("select * from pedido where dataPedido = '".$hoje."'");
-        return $resultado;
-    }
-
-    public function filtrarPedidos($numeroPedido, $dataInicial, $dataFinal, $valorInicial, $valorFinal){
-        /*echo  "num ".$numeroPedido. " dt in ". $dataInicial. " dt fim ". $dataFinal. " pc in ". $valorInicial. " pc fim ". $valorFinal;
-        var_dump($numeroPedido);*/
-
-        if (is_numeric($numeroPedido)){
-            $querry = "select * from pedido where numero = " . $numeroPedido;
-
-        } else {
-            if (!(empty($dataInicial))) {
-                if (!(empty($dataFinal))) {
-                    if (!(empty($valorInicial))) {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and dataPedido <= '" . $dataFinal . "' and valorTotal >= '" . $valorInicial . "' 
-                        and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and dataPedido <= '" . $dataFinal . "' and valorTotal >= '" . $valorInicial . "'";
-                        }
-                    } else {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and dataPedido <= '" . $dataFinal . "' and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and dataPedido <= '" . $dataFinal . "'";
-                        }
-                    }
-
-                } else {
-                    if (!(empty($valorInicial))) {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and valorTotal >= '" . $valorInicial . "' and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and valorTotal >= '" . $valorInicial . "'";
-                        }
-                    } else {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "' 
-                        and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where dataPedido >= '" . $dataInicial . "'";
-                        }
-                    }
-                }
-
-            }else {
-                if (!(empty($dataFinal))) {
-                    if (!(empty($valorInicial))) {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "' 
-                            and valorTotal >= '" . $valorInicial . "' 
-                        and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "' 
-                            and valorTotal >= '" . $valorInicial . "'";
-                        }
-                    } else {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "' 
-                            and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where dataPedido <= '" . $dataFinal . "'";
-                        }
-                    }
-
-                } else {
-                    if (!(empty($valorInicial))) {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where valorTotal >= '" . $valorInicial . "' 
-                            and valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido where valorTotal >= '" . $valorInicial . "'";
-                        }
-                    } else {
-                        if (!(empty($valorFinal))) {
-                            $querry = "select * from pedido where valorTotal <= '" . $valorFinal . "'";
-                        } else {
-                            $querry = "select * from pedido";
-                        }
-                    }
-                }
-            }
-        }
-        $resultado = $this->banco->select($querry);
+        $resultado = $this->banco->select("select * from pedidos;");
         return $resultado;
     }
 
 	public function pegarPedido($id){
-        $resultado = $this->banco->select("SELECT * FROM pedido WHERE numero = ".$id);
+        $resultado = $this->banco->select("SELECT * FROM pedidos WHERE id = '".$id."'");
         return $resultado;
     }
 
+    public function listarProdutosDoPedido($id){
+        $resultado = $this->banco->select("SELECT * FROM pedidos_produtos WHERE idPedido = '".$id."'");
+        return $resultado;
+    }
 
+    public function alterarPedido($id, $valor){
+        $resultado = $this->banco->update("UPDATE `pedidos` SET `aprovado` = '".$valor."' WHERE `id` = '".$id."'");
+        return $resultado;
+    }
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Virtual</title>
@@ -12,7 +11,7 @@
 <body>
 
 <div class="page-header">
-    <h1>Sistema de loja virtual<small> Versão 0.2</small></h1>
+    <h1>Sistema de loja virtual<small> Versão 1.0</small></h1>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -23,6 +22,7 @@
                 <ul class="nav navbar-nav">
                     <li role="presentation"><a href="../viewer/telaPedidos.php" id="btnMenuPedidos">Pedidos </a></li>
                     <li role="presentation"><a href="../viewer/telaProdutos.php" id="btnMenuProdutos">Produtos </a></li>
+                    <li role="presentation"><a href="../viewer/telaCategorias.php" id="btnMenuCategorias">Categorias </a></li>
                     <li role="presentation"><a href="../viewer/telaClientes.php" id="btnMenuClientes">Clientes </a></li>
                     <li role="presentation"><a href="../viewer/telaVendedores.php" id="btnMenuVendedores">Vendedores </a></li>
                     <li role="presentation"><a href="../viewer/telaFiliais.php" id="btnMenuFiliais">Filiais </a></li>

@@ -12,8 +12,8 @@ class ClientesDao {
 
 	function __construct() {
         $this->banco = new repositorio();
-
 	}
+
 	public function inserirCliente(Pessoa $cliente){
         $nome = $cliente->getNome();
         $telefone = $cliente->getTelefone();
@@ -57,6 +57,47 @@ class ClientesDao {
         return $resultado;
 		
 	}
+
+    public function updateCliente(Pessoa $cliente, $id){
+        $nome = $cliente->getNome();
+        $telefone = $cliente->getTelefone();
+        $celular = $cliente->getCelular();
+        $email = $cliente->getEmail();
+        $endereco = $cliente->getEndereco();
+        $cep = $cliente->getCep();
+        $cidade = $cliente->getCidade();
+        $estado = $cliente->getEstado();
+        $pais = $cliente->getPais();
+        $tipo = $cliente->getTipo();
+
+        if($tipo == "pessoaFisica"){
+
+            $cpf = $cliente->getCpf();
+            $rg = $cliente->getRg();
+            $genero = $cliente->getGenero();
+
+            $querry = "UPDATE `clientes` SET `nome`='".$nome."',`telefone`='".$telefone."',`celular`='".$celular."',
+`email`='".$email."',`endereco`='".$endereco."',`cep`='".$cep."',`cidade`='".$cidade."',`estado`='".$estado."',`pais`='".$pais."', 
+`tipoCliente`='".$tipo."',`cpf`='".$cpf."',`rg`='".$rg."',`genero`='".$genero."' WHERE id = '".$id."';";
+
+
+        }
+        else{
+            $cnpj = $cliente->getCnpj();
+            $inscricaoEstadual = $cliente->getInscricaoEstadual();
+            $nomeFantasia = $cliente->getNomeFantasia();
+
+            $querry = "UPDATE `clientes` SET `nome`='".$nome."',`telefone`='".$telefone."',`celular`='".$celular."',
+`email`='".$email."',`endereco`='".$endereco."',`cep`='".$cep."',`cidade`='".$cidade."',`estado`='".$estado."',`pais`='".$pais."', 
+`tipoCliente`='".$tipo."',`cnpj`='".$cnpj."',`inscricaoEstadual`='".$inscricaoEstadual."',`nomeFantasia`='".$nomeFantasia."' 
+WHERE id = '".$id."';";
+        }
+
+        $resultado = $this->banco->update($querry);
+
+        return $resultado;
+
+    }
 
 	public function deletarCliente($id){
 	    return $resultado = $this->banco->delete("DELETE FROM clientes WHERE id = ".$id);

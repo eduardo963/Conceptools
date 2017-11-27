@@ -1,3 +1,21 @@
+<?php
+if(array_key_exists("erro", $_GET)){
+    $erro = $_GET["erro"];
+    if($erro == "usuarioOuSenhaIcorreto"){
+        $mensagem = "Usuário ou senha incorreto!";
+    }
+    elseif ($erro == "semLoginRealizado"){
+        $mensagem = "Por favor realize login";
+    } else{
+        $mensagem = false;
+    }
+
+} else {
+    $mensagem = false;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,15 +29,19 @@
 
 <body>
     <div class="page-header">
-        <h1>Sistema de loja virtual <small> Versão 0.1 </small></h1></div>
+        <h1>Sistema de loja virtual <small> Versão 1.0 </small></h1></div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h2 class="panel-title"><strong>Área de acesso aos usuários</strong></h2></div>
+            <?php if($mensagem) echo "<p class='alert-danger'>".$mensagem."</p>";?>
         <div class="panel-body">
             <div class="col-md-4 col-md-offset-0">
-                <form class="form-horizontal" action="viewer/home.php"><span> Usuário: </span>
-                    <input class="form-control" type="text"><span>Senha: </span>
-                    <input class="form-control" type="password">
+                <form class="form-horizontal" action="viewer/home.php" method="post">
+                    <input type="hidden" name="from" value="login">
+                    <span> Usuário: </span>
+                    <input name="usuario" class="form-control" type="text">
+                    <span>Senha: </span>
+                    <input name="senha" class="form-control" type="password">
                     <button class="btn btn-primary" type="submit">Login </button><a href="#"> Esqueci minha senha!</a></form>
             </div>
         </div>

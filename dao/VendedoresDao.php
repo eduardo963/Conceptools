@@ -24,7 +24,6 @@ class VendedoresDao {
         $estado = $vendedor->getEstado();
         $pais = $vendedor->getPais();
         $ativo = $vendedor->getAtivo();
-        $tipo = $vendedor->getTipo();
 
         $cpf = $vendedor->getCpf();
         $rg = $vendedor->getRg();
@@ -44,6 +43,34 @@ class VendedoresDao {
         return $resultado;
 		
 	}
+
+    public function updateVendedor(Vendedor $vendedor, $id){
+        $nome = $vendedor->getNome();
+        $telefone = $vendedor->getTelefone();
+        $celular = $vendedor->getCelular();
+        $email = $vendedor->getEmail();
+        $endereco = $vendedor->getEndereco();
+        $cep = $vendedor->getCep();
+        $cidade = $vendedor->getCidade();
+        $estado = $vendedor->getEstado();
+        $pais = $vendedor->getPais();
+
+        $cpf = $vendedor->getCpf();
+        $rg = $vendedor->getRg();
+        $genero = $vendedor->getGenero();
+
+        $dataAdmissao = $vendedor->getDataDeAdimissao();
+        $dataNascimento = $vendedor->getDataDeNascimento();
+
+        $querry = "UPDATE `vendedores` SET `nome`='".$nome."',`telefone`='".$telefone."',`celular`='".$celular."',
+`email`='".$email."',`endereco`='".$endereco."',`cep`='".$cep."',`cidade`='".$cidade."',`estado`='".$estado."',`pais`='".$pais."',
+`cpf`='".$cpf."',`rg`='".$rg."',`genero`='".$genero."',`dataDeNascimento`='".$dataNascimento."',
+`dataDeAdmissao`='".$dataAdmissao."' WHERE id = '".$id."';";
+
+        $resultado = $this->banco->update($querry);
+        return $resultado;
+
+    }
 
 	public function deletarVendedor($id){
 	    return $resultado = $this->banco->delete("DELETE FROM vendedores WHERE id = ".$id);

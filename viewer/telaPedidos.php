@@ -1,47 +1,85 @@
 <?php
 include_once '../Data.php';
-include_once '../controller/pedidoController.php';
+include_once '../controller/PedidoController.php';
 include_once '../cabecalho.php';
-$pedidos = new pedidoController();
-$isFiltragem = false;
-$mensagem = "";
+session_start();
+session_destroy();
+//$pedidos = new pedidoController();
+//$isFiltragem = false;
+//$mensagem = "";
+//
+//
+////Este if abaixo verifica se um pedido deverá ser deletado, verificando se existe o parâmetro "deletar" na url enviada
+////para o servidor pelo POST.
+//
+//if(array_key_exists("deletar", $_POST)){
+//    $numeroPedidoParaDeletar = $_POST["deletar"];
+//
+//    if($pedidos->deletarPedido($numeroPedidoParaDeletar)){
+//        $mensagem = "<p class='alert-success'>O pedido de número {$numeroPedidoParaDeletar} removido com sucesso! </p>";
+//    } else{
+//        $mensagem = "<p class='alert-warning'>O pedido de número {$numeroPedidoParaDeletar} não foi removido com sucesso. </p>";
+//    }
+//
+//
+//}
+////Este if abaixo verifica se um pedido deverá ser visualizado, verificando se existe o parâmetro "visualizar" na url enviada
+////para o servidor pelo POST.
+//if(array_key_exists("visualizar", $_POST)){
+//    $numeroPedidoParaVisualizar = $_POST["visualizar"];
+//    include "telaDetalhesPedido.php";
+//    die;
+//
+//}
+//
+////Este if abaixo verifica se os pedidos deverão ser filtrados, caso exista o parâmetro "numeropedido" na url enviada
+////para o servidor pelo POST.
+//
+//if(array_key_exists("numeropedido", $_POST)){
+//    $numeroPedido = $_POST["numeropedido"];
+//    $dataInicial = $_POST["datainicial"];
+//    $dataFinal = $_POST["datafinal"];
+//    $valorInicial = $_POST["precoinicial"];
+//    $valorFinal = $_POST["precofinal"];
+//    $isFiltragem = true;
+//}
 
+include_once '../controller/PedidoController.php';
+$controler = new PedidoController();
 
-//Este if abaixo verifica se um pedido deverá ser deletado, verificando se existe o parâmetro "deletar" na url enviada
-//para o servidor pelo POST.
+if(array_key_exists("from",$_POST )){
 
-if(array_key_exists("deletar", $_POST)){
-    $numeroPedidoParaDeletar = $_POST["deletar"];
-
-    if($pedidos->deletarPedido($numeroPedidoParaDeletar)){
-        $mensagem = "<p class='alert-success'>O pedido de número {$numeroPedidoParaDeletar} removido com sucesso! </p>";
-    } else{
-        $mensagem = "<p class='alert-warning'>O pedido de número {$numeroPedidoParaDeletar} não foi removido com sucesso. </p>";
+    if(array_key_exists("aprovar", $_POST)){
+        $id = $_POST["aprovar"];
+        if($controler->isPedidoAprovado($id)){
+            if($controler->desativarPedido($id)) {
+                echo "<p class='alert-success'>Pedido desativado com sucesso!</p>";
+            } else{
+                echo "<p class='alert-warning'>O pedido não foi desativado com sucesso.</p>";
+            }
+        }else{
+            if($controler->ativarPedido($id)) {
+                echo "<p class='alert-success'>Pedido ativado com sucesso!</p>";
+            } else{
+                echo "<p class='alert-warning'>O pedido não foi ativado com sucesso.</p>";
+            }
+        }
     }
 
-
+    else if(array_key_exists("deletar",$_POST )){
+        $id = $_POST["deletar"];
+        if($controler->deletarPedido($id)) {
+            echo "<p class='alert-success'>Pedido excluido com sucesso!</p>";
+        } else{
+            echo "<p class='alert-warning'>O pedido não foi excluido com sucesso.</p>";
+        }
+    }
+    else if(array_key_exists("visualizar", $_POST)){
+        $id = $_POST["visualizar"];
+        header("Location: ../viewer/telaDetalhesPedido.php?from=telaPedidos&id=".$id."");
+        exit();
+    }
 }
-//Este if abaixo verifica se um pedido deverá ser visualizado, verificando se existe o parâmetro "visualizar" na url enviada
-//para o servidor pelo POST.
-if(array_key_exists("visualizar", $_POST)){
-    $numeroPedidoParaVisualizar = $_POST["visualizar"];
-    include "telaDetalhesPedido.php";
-    die;
-
-}
-
-//Este if abaixo verifica se os pedidos deverão ser filtrados, caso exista o parâmetro "numeropedido" na url enviada
-//para o servidor pelo POST.
-
-if(array_key_exists("numeropedido", $_POST)){
-    $numeroPedido = $_POST["numeropedido"];
-    $dataInicial = $_POST["datainicial"];
-    $dataFinal = $_POST["datafinal"];
-    $valorInicial = $_POST["precoinicial"];
-    $valorFinal = $_POST["precofinal"];
-    $isFiltragem = true;
-}
-
 
 ?>
     <h2>Pedidos </h2>
@@ -64,9 +102,6 @@ if(array_key_exists("numeropedido", $_POST)){
     </div>
     <div class="col-md-8 col-md-offset-0">
         <div class="table-responsive">
-            <?php
-                echo $mensagem;
-            ?>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -77,13 +112,7 @@ if(array_key_exists("numeropedido", $_POST)){
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                if($isFiltragem){
-                    $pedidos->listarPedidos($numeroPedido, $dataInicial,$dataFinal,$valorInicial,$valorFinal);
-                } else {
-                    $pedidos->exibirPedidosCadastrados();
-                }
-                ?>
+                <?php $controler->exibirPedidosCadastrados(); ?>
                 </tbody>
             </table>
         </div>

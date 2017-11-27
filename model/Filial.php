@@ -1,12 +1,12 @@
 <?php
-
+include_once "FilialInteface.php";
 /**
  * Created by PhpStorm.
  * User: Eduardo
  * Date: 2017-10-23
  * Time: 10:45 PM
  */
-class Filial
+class Filial implements FilialInteface
 {
     private $id;
     private $cep;

@@ -43,6 +43,31 @@ class VendedorController
     }
 
 
+    public function updateNovoVendedor($id, $nome, $telefone, $celular, $email, $endereco, $cep, $cidade, $estado, $pais,
+                                       $cpf, $rg, $genero, $dataDeAdmissao, $dataNascimento){
+
+        $vendedor = new Vendedor(0, $nome, $telefone, $email, $cpf, $dataDeAdmissao);
+        $vendedor->setCelular($celular);
+        $vendedor->setEndereco($endereco);
+        $vendedor->setCep($cep);
+        $vendedor->setCidade($cidade);
+        $vendedor->setEstado($estado);
+        $vendedor->setPais($pais);
+        $vendedor->setAtivo("s");
+
+        $vendedor->setCpf($cpf);
+        $vendedor->setRg($rg);
+        $vendedor->setGenero($genero);
+
+        $vendedor->setDataDeAdimissao($dataDeAdmissao);
+        $vendedor->setDataDeNascimento($dataNascimento);
+
+        $resultado = $this->vendedorDao->updateVendedor($vendedor, $id);
+
+        return $resultado;
+
+    }
+
     public function deletarVendedor($id){
         return $this->vendedorDao->deletarVendedor($id);
     }

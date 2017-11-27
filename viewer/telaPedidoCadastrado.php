@@ -1,6 +1,6 @@
 <?php
 include_once '../Data.php';
-include_once '../controller/pedidoController.php';
+include_once '../controller/PedidoController.php';
 $numeroPedido = $_GET['numeroPedido'];
 $valorPedido = $_GET['valorPedido'];
 $dataPedido = $_GET['dataPedido'];

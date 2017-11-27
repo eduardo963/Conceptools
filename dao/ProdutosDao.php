@@ -13,6 +13,7 @@ class ProdutosDao {
 
 	}
 	public function inserirProduto(Produto $produto){
+
         $codigoProduto = $produto->getCodProduto();
         $nomeProduto = $produto->getNomeProduto();
         $valorProduto = $produto->getValor();
@@ -32,8 +33,28 @@ values ('".$codigoProduto."', '".$valorProduto."', '".$aVenda."', '".$categoriaP
         $resultado = $this->banco->insert($querry);
 
         return $resultado;
-		
+
 	}
+
+    public function updateProduto(Produto $produto, $id){
+        $codigoProduto = $produto->getCodProduto();
+        $nomeProduto = $produto->getNomeProduto();
+        $valorProduto = $produto->getValor();
+        $categoriaProduto = $produto->getidCategoriaProduto();
+        $corProduto = $produto->getCor();
+        $pesoProduto = $produto->getPesoBruto();
+        $materialProduto = $produto->getMaterial();
+        $dimensoesProduto = $produto->getDimensoes();
+        $descricaoProduto = $produto->getDescricao();
+
+        $querry = "UPDATE `produtos` SET `codProduto`='".$codigoProduto."',`valor`='".$valorProduto."',
+`idCategoriaProduto`='".$categoriaProduto."',`nomeProduto`='".$nomeProduto."',`cor`='".$corProduto."',`pesoBruto`='".$pesoProduto."',
+`dimensoes`='".$dimensoesProduto."',`material`='".$materialProduto."',`descricao`='".$descricaoProduto."' WHERE idProduto = '".$id."';";
+
+        $resultado = $this->banco->update($querry);
+
+        return $resultado;
+    }
 
 	public function deletarProduto($idProduto){
 	    return $resultado = $this->banco->delete("DELETE FROM produtos WHERE idProduto = ".$idProduto);
@@ -51,8 +72,15 @@ values ('".$codigoProduto."', '".$valorProduto."', '".$aVenda."', '".$categoriaP
 
 	public function pegarProduto($id){
         $resultado = $this->banco->select("SELECT * FROM produtos WHERE idProduto = ".$id);
-        return $resultado;
+        foreach ($resultado as $linha){
+            return $linha;
+        }
     }
 
+    public function buscarProduto($nome, $codigo){
+        $resultado = $this->banco->select("SELECT * FROM produtos WHERE `nomeProduto` LIKE '%".$nome."%' 
+        and `codProduto` LIKE '%".$codigo."%' LIMIT 10");
+        return $resultado;
+    }
 
 }
