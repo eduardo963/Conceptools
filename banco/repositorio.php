@@ -81,6 +81,11 @@ class repositorio implements InterfaceRepositorio{
         }
 
         $resultado = $conexao->query($querry);
+        if(!$resultado){
+            $conexao->close();
+            return false;
+        }
+
         try {
             if ($resultado->num_rows > 0) {
                 // output data of each row

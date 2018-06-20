@@ -14,8 +14,6 @@ class pedidosDao {
 	}
 	public function inserirPedido(pedido $pedido, $produtos){
 
-
-
         $valorTotal = $pedido->getValorTotal();
         $cliente = $pedido->getCliente();
         $vendedor = $pedido->getVendedor();

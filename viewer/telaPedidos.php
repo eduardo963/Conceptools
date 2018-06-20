@@ -62,7 +62,31 @@ if(array_key_exists("from",$_POST )){
                     </tr>
                 </thead>
                 <tbody>
-                <?php $controler->exibirPedidosCadastrados(); ?>
+                <?php
+                $pedidos = $controler->exibirPedidosCadastrados();
+                if($pedidos) {
+                    foreach ($pedidos as $pedido) {
+                        echo "<tr>
+                    <td>{$pedido["id"]} </td>
+                        <td>{$pedido["valorTotal"]} </td>
+                        <td>{$pedido["dataPedido"]} </td>
+                        <td><form method='post'>
+                        <input type='hidden' name='from' value='telaPedidos'>
+                        <button type='submit' name='visualizar' value='{$pedido["id"]}'> 
+                            <img src='../assets/img/imgVisualizar.png' alt='Visualizar' style='width:1.2em; height:1.2em'>
+                        </button>
+                        <button type='submit' name='aprovar' value='{$pedido["id"]}'> 
+                            <img src='../assets/img/imgAprovar.png' alt='Aprovar' style='width:1.2em; height:1.2em'>
+                        </button> 
+                        <button type='submit' name='deletar' value='{$pedido["id"]}'> 
+                            <img src='../assets/img/imgDeletar.png' alt='Deletar' style='width:1.2em; height:1.2em'>
+                        </button>
+                        </form> 
+                        </td>
+                    </tr>";
+                    }
+                }
+                ?>
                 </tbody>
             </table>
         </div>

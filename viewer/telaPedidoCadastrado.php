@@ -7,7 +7,8 @@ $dataPedido = $_GET['dataPedido'];
 
 $novoPedido = new pedidoController();
 
-$resultado = $novoPedido->criarNovoPedido($valorPedido,$dataPedido);
+
+$resultado = $novoPedido->criarNovoPedido($valorTotal, $cliente, $vendedor, $filial, $numeroDeItens, $produtos);
 
 
 include_once '../cabecalho.php';
